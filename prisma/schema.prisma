@@ -99,7 +99,6 @@ model AccessLog {
   createdAt   DateTime  @default(now())
 }
 
-
 // 中间关联模型，支持排序和额外信息
 model SettingImage {
   id            String      @id @default(cuid())
@@ -129,4 +128,3 @@ model Image {
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
 }
-No newline at end of file

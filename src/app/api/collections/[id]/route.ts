@@ -24,13 +24,11 @@ export async function PATCH(
           OR: [
             { 
               name: {
-
                 equals: name
               }
             },
             { 
               slug: {
-
                 equals: slug
               }
             }
