@@ -13,12 +13,12 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 async function checkSiteSettingTableExists() {
   const result: any = await prisma.$queryRaw`
     SELECT EXISTS (
-      SELECT FROM information_schema.tables 
-      WHERE  table_schema = 'public'
-      AND    table_name   = 'SiteSetting'
-    );
+      SELECT 1 FROM information_schema.tables 
+      WHERE table_schema = DATABASE()   -- 使用当前数据库名
+        AND table_name = 'SiteSetting'
+    ) AS \`exists\`                       -- 取别名并用反引号转义
   `;
-  return result[0].exists;
+  return result[0]?.exists ? Boolean(result[0].exists) : false;
 }
 
 type Props = {
